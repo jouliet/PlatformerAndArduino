@@ -1,9 +1,9 @@
 # Platformer
 
 ## To Do
-- Movement (Pablo) []
-- Jump (Juliette) []
-- One-way Platforms (Pablo) []
-- Running (Pablo) []
-- Wall Jump (Juliette) []
+- Movement (Pablo) [x]
+- Jump (Juliette) [x]
+- One-way Platforms (Pablo) [x]
+- Running (Pablo) [x]
+- Wall Jump (Pablo) []
 - Double Jump (Juliette) []
