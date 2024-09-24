@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2144394626647481186}
   - component: {fileID: 5119642454747989204}
   - component: {fileID: 744177859472772273}
+  - component: {fileID: 8534349719646834722}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -158,3 +159,101 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8534349719646834722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764807155878486932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 084e8563eda9fbf4c893216772c4a579, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0ec7ca62-44f1-429c-be94-f3a3c1f0c01f
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/Shaul
+      Eizikovich vJoy - Virtual Joystick/stick,/Shaul Eizikovich vJoy - Virtual Joystick1/stick,/Shaul
+      Eizikovich vJoy - Virtual Joystick2/stick,/Shaul Eizikovich vJoy - Virtual
+      Joystick3/stick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 28353de1-4e4e-4135-894b-522677cebaaa
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df8a2de2-d952-4b3c-b5c9-e7cbd16b0578
+    m_ActionName: Player/Fire[/Mouse/leftButton,/Shaul Eizikovich vJoy - Virtual
+      Joystick/trigger,/Shaul Eizikovich vJoy - Virtual Joystick1/trigger,/Shaul
+      Eizikovich vJoy - Virtual Joystick2/trigger,/Shaul Eizikovich vJoy - Virtual
+      Joystick3/trigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e6d2d5da-bc18-415d-a99d-2d1e8d5e3f43
+    m_ActionName: UI/Navigate[/Shaul Eizikovich vJoy - Virtual Joystick/stick/up,/Shaul
+      Eizikovich vJoy - Virtual Joystick1/stick/up,/Shaul Eizikovich vJoy - Virtual
+      Joystick2/stick/up,/Shaul Eizikovich vJoy - Virtual Joystick3/stick/up,/Shaul
+      Eizikovich vJoy - Virtual Joystick/stick/down,/Shaul Eizikovich vJoy - Virtual
+      Joystick1/stick/down,/Shaul Eizikovich vJoy - Virtual Joystick2/stick/down,/Shaul
+      Eizikovich vJoy - Virtual Joystick3/stick/down,/Shaul Eizikovich vJoy - Virtual
+      Joystick/stick/left,/Shaul Eizikovich vJoy - Virtual Joystick1/stick/left,/Shaul
+      Eizikovich vJoy - Virtual Joystick2/stick/left,/Shaul Eizikovich vJoy - Virtual
+      Joystick3/stick/left,/Shaul Eizikovich vJoy - Virtual Joystick/stick/right,/Shaul
+      Eizikovich vJoy - Virtual Joystick1/stick/right,/Shaul Eizikovich vJoy - Virtual
+      Joystick2/stick/right,/Shaul Eizikovich vJoy - Virtual Joystick3/stick/right,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c41f1c7-aaa6-451c-b271-507fc2cc631f
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e332d92f-76e9-421f-b15d-63f3a63b17d5
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bcec61bc-d589-4291-ba2a-f3259f1fe17d
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9996fae5-1dc7-4bbb-9c1d-ec844269edcd
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a29193c9-046c-440d-8c84-f453241e3bb8
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 45b06293-4616-4e31-ae84-e9ff02ef2ef0
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 90020240-738a-41d8-b90e-b238e8901714
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 69f66bfa-c613-49ab-a8fc-26269374a96a
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e130851e-0e51-4d2a-a89b-bec3bfb7c53b
+    m_ActionName: UI/TrackedDeviceOrientation
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
