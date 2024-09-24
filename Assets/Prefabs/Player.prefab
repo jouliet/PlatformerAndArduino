@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8534349719646834722}
   - component: {fileID: 2195848859451839129}
   - component: {fileID: -6294869209549579688}
+  - component: {fileID: 7533658123254441676}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -98,7 +99,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3764807155878486932}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ffebcb280d37fc4488b6e2596507a477, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -149,8 +150,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 2
+  m_Material: {fileID: 6200000, guid: ffebcb280d37fc4488b6e2596507a477, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -219,17 +220,6 @@ MonoBehaviour:
       Joystick3/stick]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 28353de1-4e4e-4135-894b-522677cebaaa
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: df8a2de2-d952-4b3c-b5c9-e7cbd16b0578
-    m_ActionName: Player/Fire[/Mouse/leftButton,/Shaul Eizikovich vJoy - Virtual
-      Joystick/trigger,/Shaul Eizikovich vJoy - Virtual Joystick1/trigger,/Shaul
-      Eizikovich vJoy - Virtual Joystick2/trigger,/Shaul Eizikovich vJoy - Virtual
-      Joystick3/trigger]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: e6d2d5da-bc18-415d-a99d-2d1e8d5e3f43
     m_ActionName: UI/Navigate[/Shaul Eizikovich vJoy - Virtual Joystick/stick/up,/Shaul
       Eizikovich vJoy - Virtual Joystick1/stick/up,/Shaul Eizikovich vJoy - Virtual
@@ -294,6 +284,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4d934853-1380-4f31-8fb8-c6cd2ae3910b
     m_ActionName: Player/Run[/XInputControllerWindows1/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7533658123254441676}
+        m_TargetAssemblyTypeName: PlayerJumps, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4a7a321a-3442-4c8c-8fd9-2d151a6f5444
+    m_ActionName: Player/Jump[/XInputControllerWindows1/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -326,3 +332,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   xAxisDrag: 0.2
+--- !u!114 &7533658123254441676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764807155878486932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bcee305008709f469205d1726d8f890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpImpulse: {x: 0, y: 100}
+  isJumping: {fileID: 3041464701191509435, guid: 5e02792ecf096dd4bb4937dff7b1a672, type: 3}
+  jumpTimer: 1

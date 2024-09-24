@@ -28,13 +28,13 @@ public class PlayerJumps : MonoBehaviour
             rb.AddForce(jumpImpulse);
             jumpTimer = Time.time + 2;
             canDoubleJump = true;
-            Debug.Log("jump!");
+            //Debug.Log("jump!");
         }
         if (canDoubleJump && Time.time <= jumpTimer)
         {
             rb.AddForce(jumpImpulse);
             canDoubleJump = false;
-            Debug.Log("Double jump!");
+            //Debug.Log("Double jump!");
         }
     }
 }

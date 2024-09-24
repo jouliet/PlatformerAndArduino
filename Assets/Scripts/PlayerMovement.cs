@@ -25,17 +25,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(direction.x);
         rb.AddForce(new Vector2(direction.x, 0)*100);
         Vector2 velocity = rb.velocity;
         if (Mathf.Abs(rb.velocity.x) > 2 * maxSpeed && isRunning)
         {
             velocity.x = direction.x * 2 * maxSpeed;
-            rb.velocity = velocity;
         }
-        else if (Mathf.Abs(rb.velocity.x) > maxSpeed && !isRunning)
+        if (Mathf.Abs(rb.velocity.x) > maxSpeed && !isRunning)
         {
             velocity.x = direction.x * maxSpeed;
-            rb.velocity = velocity;
         }
         velocity.x = velocity.x / (xAxisDrag + 1f); // zero = no drag. Start with a small value like 0.05
         rb.velocity = velocity;
@@ -48,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnRun(InputAction.CallbackContext context)
     {
-        Debug.Log("ouais");
         if (context.performed)
         {
             isRunning = true;
