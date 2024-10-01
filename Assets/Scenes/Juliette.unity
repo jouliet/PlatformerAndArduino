@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_ActionId
@@ -488,6 +488,10 @@ PrefabInstance:
     - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_ActionId
       value: 4a7a321a-3442-4c8c-8fd9-2d151a6f5444
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[12].m_ActionId
+      value: 4d934853-1380-4f31-8fb8-c6cd2ae3910b
       objectReference: {fileID: 0}
     - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_ActionId
@@ -548,12 +552,20 @@ PrefabInstance:
       value: Player/Jump
       objectReference: {fileID: 0}
     - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[12].m_ActionName
+      value: Player/Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_ActionName
       value: Player/Jump
       objectReference: {fileID: 0}
     - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8534349719646834722, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
@@ -647,7 +659,8 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7533658123254441676, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 908633202253504458, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}
@@ -675,8 +688,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcee305008709f469205d1726d8f890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpImpulse: {x: 0, y: 100}
+  jumpImpulse: {x: 0, y: 3}
   isJumping: {fileID: 1217891351}
+  maxJumps: 2
 --- !u!4 &1529919538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 908633202253504458, guid: 1a171ba2ce32da64fbc006a7d713a8bb, type: 3}

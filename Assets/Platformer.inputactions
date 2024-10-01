@@ -179,6 +179,17 @@
                 },
                 {
                     "name": "",
+                    "id": "629efd9f-21ff-4d4a-8245-0148ea50c130",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6443be3d-a3fe-4036-b60c-5fbb2018b656",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
