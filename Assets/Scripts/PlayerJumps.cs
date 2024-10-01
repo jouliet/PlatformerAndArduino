@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerJumps : MonoBehaviour
 {
@@ -12,9 +13,13 @@ public class PlayerJumps : MonoBehaviour
     [SerializeField] int maxJumps;
     int jumpsLeft;
     bool canDoubleJump = false;
+
+    PlayerWallJump wallJump;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        wallJump = GetComponent<PlayerWallJump>();
         jumpsLeft = maxJumps;
     }
 
@@ -31,20 +36,18 @@ public class PlayerJumps : MonoBehaviour
             canDoubleJump = true;
         }
     }
-    public void OnJump() {
-        if (IsGrounded())
+    public void OnJump(InputAction.CallbackContext context) {
+        if (context.performed && (IsGrounded() || (canDoubleJump && jumpsLeft > 0 && !wallJump.IsOnWall())))
         {
+            Vector2 velocity = rb.velocity;
+            velocity.y = 0;
+            rb.velocity = velocity;
             rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
-            jumpsLeft--;
-        }
-        else if (canDoubleJump && jumpsLeft > 0)
-        {
-            rb.AddForce(1.5f * jumpImpulse, ForceMode2D.Impulse);
             jumpsLeft--;
         }
     }
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(isJumping.transform.position, Vector2.down, distance);
         if (hit.collider != null)

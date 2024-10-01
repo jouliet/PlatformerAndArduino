@@ -6,4 +6,4 @@
 - One-way Platforms (Pablo) [x]
 - Running (Pablo) [x]
 - Wall Jump (Pablo) []
-- Double Jump (Juliette) []
+- Double Jump (Juliette) [x]
