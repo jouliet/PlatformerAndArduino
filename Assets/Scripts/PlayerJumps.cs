@@ -49,12 +49,10 @@ public class PlayerJumps : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(isJumping.transform.position, Vector2.down, distance);
         if (hit.collider != null)
         {
-            Debug.Log("is grounded");
             return true;
         }
         else
         {
-            Debug.Log("is not grounded");
             return false;
         }
     }

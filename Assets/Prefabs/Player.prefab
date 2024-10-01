@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7533658123254441676}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,4 +346,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpImpulse: {x: 0, y: 100}
   isJumping: {fileID: 3041464701191509435, guid: 5e02792ecf096dd4bb4937dff7b1a672, type: 3}
-  jumpTimer: 1
+  maxJumps: 0
