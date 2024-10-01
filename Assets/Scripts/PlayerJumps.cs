@@ -12,9 +12,13 @@ public class PlayerJumps : MonoBehaviour
     [SerializeField] int maxJumps;
     int jumpsLeft;
     bool canDoubleJump = false;
+
+    PlayerWallJump wallJump;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        wallJump = GetComponent<PlayerWallJump>();
         jumpsLeft = maxJumps;
     }
 
@@ -37,14 +41,14 @@ public class PlayerJumps : MonoBehaviour
             rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
             jumpsLeft--;
         }
-        else if (canDoubleJump && jumpsLeft > 0)
+        else if (canDoubleJump && jumpsLeft > 0 && !wallJump.IsOnWall())
         {
             rb.AddForce(1.5f * jumpImpulse, ForceMode2D.Impulse);
             jumpsLeft--;
         }
     }
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(isJumping.transform.position, Vector2.down, distance);
         if (hit.collider != null)
