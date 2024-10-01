@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    SpriteRenderer spriteRenderer;
+
     private bool isRunning;
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumps = GetComponent<PlayerJumps>();
         wallJump = GetComponent<PlayerWallJump>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         direction = Vector2.zero;
         isRunning = false;
     }
@@ -62,6 +65,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             direction = context.ReadValue<Vector2>() / 2;
+        }
+
+        if (direction.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (direction.x > 0)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 
