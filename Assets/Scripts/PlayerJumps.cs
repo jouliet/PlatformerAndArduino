@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerJumps : MonoBehaviour
 {
@@ -35,15 +36,13 @@ public class PlayerJumps : MonoBehaviour
             canDoubleJump = true;
         }
     }
-    public void OnJump() {
-        if (IsGrounded())
+    public void OnJump(InputAction.CallbackContext context) {
+        if (context.performed && (IsGrounded() || (canDoubleJump && jumpsLeft > 0 && !wallJump.IsOnWall())))
         {
+            Vector2 velocity = rb.velocity;
+            velocity.y = 0;
+            rb.velocity = velocity;
             rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
-            jumpsLeft--;
-        }
-        else if (canDoubleJump && jumpsLeft > 0 && !wallJump.IsOnWall())
-        {
-            rb.AddForce(1.5f * jumpImpulse, ForceMode2D.Impulse);
             jumpsLeft--;
         }
     }

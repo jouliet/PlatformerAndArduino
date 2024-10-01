@@ -339,7 +339,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3727419563553955878}
         m_TargetAssemblyTypeName: PlayerJumps, Assembly-CSharp
         m_MethodName: OnJump
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcee305008709f469205d1726d8f890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpImpulse: {x: 0, y: 3}
+  jumpImpulse: {x: 0, y: 10}
   isJumping: {fileID: 6526854566280493651}
   maxJumps: 2
 --- !u!114 &1165509749692864198
