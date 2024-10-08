@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  cameraForce: 5
+  cameraForce: 10
   cameraDrag: 0.1
   cameraDistance: 5
 --- !u!50 &-1807292776330992841
