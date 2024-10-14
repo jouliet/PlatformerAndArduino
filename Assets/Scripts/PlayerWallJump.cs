@@ -11,7 +11,9 @@ public class PlayerWallJump : MonoBehaviour
     int direction;
     [SerializeField] GameObject left;
     [SerializeField] GameObject right;
+    [SerializeField] float delay;
     float distance = 0.1f;
+    float timeSinceLast;
     [SerializeField] int maxJumps;
     int jumpsLeft;
     bool canWallJump = false;
@@ -23,6 +25,7 @@ public class PlayerWallJump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumpsLeft = maxJumps;
         jumps = GetComponent<PlayerJumps>();
+        timeSinceLast = 0;
     }
 
     // Update is called once per frame
@@ -37,13 +40,16 @@ public class PlayerWallJump : MonoBehaviour
         {
             canWallJump = false;
         }
+
+        timeSinceLast += Time.deltaTime;
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && canWallJump && !jumps.IsGrounded())
+        if (context.performed && canWallJump && !jumps.IsGrounded() && timeSinceLast > delay)
         {
             rb.AddForce(jumpImpulse + (direction * Vector2.right), ForceMode2D.Impulse);
             jumpsLeft--;
+            timeSinceLast = 0;
         }
     }
 
