@@ -28,7 +28,7 @@ public class PlayerJumps : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         wallJump = GetComponent<PlayerWallJump>();
         render = gameObject.GetComponent<SpriteRenderer>();
-        defaultColor = new Color(1, 0.05786445f, 0, 1);
+        defaultColor = render.color;
         targetColor = new Color(1, 0.05786445f, 1, 1);
         jumpsLeft = maxJumps;
     }
@@ -52,7 +52,7 @@ public class PlayerJumps : MonoBehaviour
         }
     }
     public void OnJump(InputAction.CallbackContext context) {
-        if (IsGrounded() || (canDoubleJump && jumpsLeft > 0 && !wallJump.IsOnWall()))
+        if (IsGrounded() || (canDoubleJump && !wallJump.IsOnWall()))
         {
             if (context.performed && context.duration < 0.3f)
             {
@@ -84,20 +84,26 @@ public class PlayerJumps : MonoBehaviour
 
     void Jump()
     {
-        Vector2 velocity = rb.velocity;
-        velocity.y = 0;
-        rb.velocity = velocity;
-        rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
-        jumpsLeft--;
+        if (jumpsLeft > 0)
+        {
+            Vector2 velocity = rb.velocity;
+            velocity.y = 0;
+            rb.velocity = velocity;
+            rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
+            jumpsLeft--;
+        }
     }
 
     void ChargedJump(float duration)
     {
-        float charge = Mathf.Clamp(1.7f * duration, 1, 2);
-        rb.AddForce(jumpImpulse * charge, ForceMode2D.Impulse);
-        jumpsLeft =- 2;
-        activateGradient = false;
-        render.color = defaultColor;
-        gradient = 0;
+        if (jumpsLeft > 0)
+        {
+            float charge = Mathf.Clamp(1.7f * duration, 1, 2);
+            rb.AddForce(jumpImpulse * charge, ForceMode2D.Impulse);
+            jumpsLeft = 0;
+            activateGradient = false;
+            render.color = defaultColor;
+            gradient = 0;
+        }
     }
 }
