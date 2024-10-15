@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerJumps : MonoBehaviour
 {
-    // Start is called before the first frame update
     Rigidbody2D rb;
+    SpriteRenderer render;
+
+    Color defaultColor;
+    Color targetColor;
+    bool activateGradient = false;
+    float gradient = 0;
+
     [SerializeField] Vector2 jumpImpulse;
     [SerializeField] GameObject isJumping;
     float distance = 0.1f;
@@ -22,6 +29,9 @@ public class PlayerJumps : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         wallJump = GetComponent<PlayerWallJump>();
+        render = gameObject.GetComponent<SpriteRenderer>();
+        defaultColor = render.color;
+        targetColor = new Color(1, 0.05786445f, 1, 1);
         jumpsLeft = maxJumps;
     }
 
@@ -37,16 +47,27 @@ public class PlayerJumps : MonoBehaviour
         {
             canDoubleJump = true;
         }
+        if (activateGradient)
+        {
+            gradient += Time.deltaTime * 1.2f;
+            render.color = Color32.Lerp(defaultColor, targetColor, gradient);
+        }
     }
     public void OnJump(InputAction.CallbackContext context) {
-        if (context.performed && (IsGrounded() || (canDoubleJump && jumpsLeft > 0 && !wallJump.IsOnWall())))
+        if (IsGrounded() || (canDoubleJump && !wallJump.IsOnWall()))
         {
-            StartCoroutine(JumpEffect());
-            Vector2 velocity = rb.velocity;
-            velocity.y = 0;
-            rb.velocity = velocity;
-            rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
-            jumpsLeft--;
+            if (context.performed && context.duration < 0.3f)
+            {
+                Jump();
+            }
+            if (context.interaction is HoldInteraction)
+            {
+                activateGradient = true;
+            }
+            if (context.canceled && context.interaction is HoldInteraction)
+            {
+                ChargedJump((float)context.duration);
+            }
         }
     }
 
@@ -63,10 +84,28 @@ public class PlayerJumps : MonoBehaviour
         }
     }
 
-    IEnumerator JumpEffect()
+    void Jump()
     {
-        jumpEffect.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        jumpEffect.SetActive(false);
+        if (jumpsLeft > 0)
+        {
+            Vector2 velocity = rb.velocity;
+            velocity.y = 0;
+            rb.velocity = velocity;
+            rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
+            jumpsLeft--;
+        }
+    }
+
+    void ChargedJump(float duration)
+    {
+        if (jumpsLeft > 0)
+        {
+            float charge = Mathf.Clamp(1.7f * duration, 1, 2);
+            rb.AddForce(jumpImpulse * charge, ForceMode2D.Impulse);
+            jumpsLeft = 0;
+            activateGradient = false;
+            render.color = defaultColor;
+            gradient = 0;
+        }
     }
 }
