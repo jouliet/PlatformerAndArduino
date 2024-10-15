@@ -14,6 +14,8 @@ public class PlayerJumps : MonoBehaviour
     int jumpsLeft;
     bool canDoubleJump = false;
 
+    [SerializeField] GameObject jumpEffect;
+
     PlayerWallJump wallJump;
 
     void Start()
@@ -39,6 +41,7 @@ public class PlayerJumps : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context) {
         if (context.performed && (IsGrounded() || (canDoubleJump && jumpsLeft > 0 && !wallJump.IsOnWall())))
         {
+            StartCoroutine(JumpEffect());
             Vector2 velocity = rb.velocity;
             velocity.y = 0;
             rb.velocity = velocity;
@@ -58,5 +61,12 @@ public class PlayerJumps : MonoBehaviour
         {
             return false;
         }
+    }
+
+    IEnumerator JumpEffect()
+    {
+        jumpEffect.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        jumpEffect.SetActive(false);
     }
 }
