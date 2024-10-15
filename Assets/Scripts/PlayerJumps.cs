@@ -21,6 +21,8 @@ public class PlayerJumps : MonoBehaviour
     int jumpsLeft;
     bool canDoubleJump = false;
 
+    [SerializeField] GameObject jumpEffect;
+
     PlayerWallJump wallJump;
 
     void Start()
@@ -90,6 +92,7 @@ public class PlayerJumps : MonoBehaviour
             velocity.y = 0;
             rb.velocity = velocity;
             rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
+            StartCoroutine(JumpEffect());
             jumpsLeft--;
         }
     }
@@ -100,10 +103,18 @@ public class PlayerJumps : MonoBehaviour
         {
             float charge = Mathf.Clamp(1.7f * duration, 1, 2);
             rb.AddForce(jumpImpulse * charge, ForceMode2D.Impulse);
+            StartCoroutine(JumpEffect());
             jumpsLeft = 0;
             activateGradient = false;
             render.color = defaultColor;
             gradient = 0;
         }
+    }
+
+    IEnumerator JumpEffect()
+    {
+        jumpEffect.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        jumpEffect.SetActive(false);
     }
 }
