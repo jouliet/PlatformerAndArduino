@@ -74,7 +74,7 @@ public class PlayerJumps : MonoBehaviour
     public bool IsGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(isJumping.transform.position, Vector2.down, distance);
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.CompareTag("Platform"))
         {
             return true;
         }
