@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float yAxisDrag;
     [SerializeField] private float wallAxisDrag;
 
+    [SerializeField] private GameObject leftRunEffect;
+    [SerializeField] private GameObject rightRunEffect;
+
     PlayerJumps jumps;
     PlayerWallJump wallJump;
 
@@ -54,6 +57,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.velocity = velocity;
+
+        if (velocity.x > 0 && isRunning)
+        {
+            leftRunEffect.SetActive(true);
+            rightRunEffect.SetActive(false);
+        }
+        else if (velocity.x < 0 && isRunning)
+        {
+            leftRunEffect.SetActive(false);
+            rightRunEffect.SetActive(true);
+        }
+        else
+        {
+            leftRunEffect.SetActive(false);
+            rightRunEffect.SetActive(false);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
