@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerState : MonoBehaviour
+public class Trophy : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,8 +17,8 @@ public class PlayerState : MonoBehaviour
         
     }
 
-    public void Kill()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Menu");
     }
 }
