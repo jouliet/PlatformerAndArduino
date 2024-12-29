@@ -28,11 +28,11 @@ public class CameraControl : MonoBehaviour
         target += offSet;
         position = transform.position;
         float distance = (position - target).magnitude;
-        velocity = rb.velocity;
+        velocity = rb.linearVelocity;
 
         rb.AddForce(target - position);
         velocity = velocity / (1f + cameraDrag / distance);
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
     }
 
     public void OnMoveCamera(InputAction.CallbackContext context)

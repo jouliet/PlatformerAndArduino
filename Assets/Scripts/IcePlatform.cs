@@ -9,7 +9,7 @@ public class IcePlatform : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("slip");
-            if (other.attachedRigidbody.velocity.x > 0) {
+            if (other.attachedRigidbody.linearVelocity.x > 0) {
                 other.attachedRigidbody.AddForce(slipperyness);
             }
             else

@@ -39,12 +39,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         rb.AddForce(new Vector2(direction.x, 0)*100);
-        Vector2 velocity = rb.velocity;
-        if (Mathf.Abs(rb.velocity.x) > 2 * maxSpeed && isRunning)
+        Vector2 velocity = rb.linearVelocity;
+        if (Mathf.Abs(rb.linearVelocity.x) > 2 * maxSpeed && isRunning)
         {
             velocity.x = direction.x * 2 * maxSpeed;
         }
-        if (Mathf.Abs(rb.velocity.x) > maxSpeed && !isRunning)
+        if (Mathf.Abs(rb.linearVelocity.x) > maxSpeed && !isRunning)
         {
             velocity.x = direction.x * maxSpeed;
         }
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = velocity.y / (wallAxisDrag + 1f);
         }
 
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
 
         if (velocity.x > 0 && isRunning)
         {

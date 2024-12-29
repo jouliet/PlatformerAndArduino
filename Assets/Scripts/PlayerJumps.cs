@@ -88,9 +88,9 @@ public class PlayerJumps : MonoBehaviour
     {
         if (jumpsLeft > 0)
         {
-            Vector2 velocity = rb.velocity;
+            Vector2 velocity = rb.linearVelocity;
             velocity.y = 0;
-            rb.velocity = velocity;
+            rb.linearVelocity = velocity;
             rb.AddForce(jumpImpulse, ForceMode2D.Impulse);
             StartCoroutine(JumpEffect());
             jumpsLeft--;

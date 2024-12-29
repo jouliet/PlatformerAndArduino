@@ -24,7 +24,7 @@ public class MovingPlatform : MonoBehaviour
         if (isMoving)
         {
             transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            if (GetComponent<Rigidbody2D>().velocity == Vector2.zero)
+            if (GetComponent<Rigidbody2D>().linearVelocity == Vector2.zero)
             {
                 timer -= Time.deltaTime;
                 if (timer <= 0)
