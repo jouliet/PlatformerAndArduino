@@ -5,20 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private float health = 3;
 
     public void Kill()
     {
         SceneManager.LoadScene("Game");
     }
+
+    public void TakeDamage()
+    {
+        health--;
+        GameObject.Find("UIManager").GetComponent<UIManager>().UpdateHealth(health);
+        if (health <= 0)
+        {
+            Kill();
+        }
+    }
+
 }

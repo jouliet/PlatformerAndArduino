@@ -59,19 +59,16 @@ public class PlayerWallJump : MonoBehaviour
         RaycastHit2D rightHit = Physics2D.Raycast(right.transform.position, Vector2.right, distance);
         if (leftHit.collider != null)
         {
-            Debug.Log("left wall");
             direction = 5;
             return true;
         }
         else if (rightHit.collider != null)
         {
-            Debug.Log("right wall");
             direction = -5;
             return true;
         }
         else
         {
-            Debug.Log("is not on wall");
             return false;
         }
     }

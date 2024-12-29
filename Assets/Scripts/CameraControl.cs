@@ -8,7 +8,6 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] GameObject player;
-    [SerializeField] float cameraForce;
     [SerializeField] float cameraDrag;
     [SerializeField] float cameraDistance;
     Rigidbody2D rb;
