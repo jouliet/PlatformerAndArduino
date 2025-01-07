@@ -19,6 +19,6 @@ public class Trophy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Game");
     }
 }

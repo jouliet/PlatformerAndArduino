@@ -6,11 +6,14 @@ public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] GameObject start;
     [SerializeField] GameObject end;
-    [SerializeField] float speed;
+    float speed = 7;
     Vector2 target;
     float maxTimer = 4;
     float timer;
     bool isMoving;
+
+    private float previousDistance;
+    private float currentDistance;
     void Start()
     {
         target = end.transform.position;
@@ -21,7 +24,7 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isMoving)
+        /*if (isMoving)
         {
             transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
             if (GetComponent<Rigidbody2D>().linearVelocity == Vector2.zero)
@@ -32,7 +35,22 @@ public class MovingPlatform : MonoBehaviour
                     ChangeTarget();
                 }
             }
+        }*/
+
+        if (isMoving)
+        {
+            float delta = currentDistance - previousDistance;
+            Debug.Log(delta);
+            if (delta >= 2 && delta <= 20)
+            {
+                transform.Translate(speed * Vector3.right * Time.deltaTime);
+            }
+            if (delta <= -2 && delta >= -20)
+            {
+                transform.Translate(speed * Vector3.left * Time.deltaTime);
+            }
         }
+
     }
 
     void ChangeTarget()
@@ -46,6 +64,12 @@ public class MovingPlatform : MonoBehaviour
             target = start.transform.position;
         }
         timer = maxTimer;
+    }
+
+    public void UpdateDistance(float distance)
+    {
+        previousDistance = currentDistance;
+        currentDistance = distance;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -63,5 +87,6 @@ public class MovingPlatform : MonoBehaviour
         {
             other.gameObject.transform.SetParent(null);
         }
+        isMoving = false;
     }
 }

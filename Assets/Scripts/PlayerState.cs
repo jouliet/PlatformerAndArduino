@@ -7,6 +7,8 @@ public class PlayerState : MonoBehaviour
 {
     private float health = 3;
 
+    [SerializeField] GameObject arduinoController;
+
     public void Kill()
     {
         SceneManager.LoadScene("Game");
@@ -15,6 +17,7 @@ public class PlayerState : MonoBehaviour
     public void TakeDamage()
     {
         health--;
+        arduinoController.GetComponent<ArduinoController>().UpdateHealth(health);
         GameObject.Find("UIManager").GetComponent<UIManager>().UpdateHealth(health);
         if (health <= 0)
         {

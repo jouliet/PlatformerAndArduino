@@ -9,8 +9,11 @@ public class UIManager : MonoBehaviour
     float coinScore;
     [SerializeField] TextMeshProUGUI healthText;
 
+    [SerializeField] GameObject arduinoController;
+
     public void AddCoin() {
         coinScore++;
+        arduinoController.GetComponent<ArduinoController>().CoinLED();
         coinText.text = coinScore.ToString();
     }
     public void UpdateHealth(float health)
